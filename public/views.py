@@ -39,8 +39,22 @@ class AllClubsView(APIView):
 
     def get(self, request):
         clubs = Clubs.objects.all()
+        serializer = AllClubsSerializers(clubs, many=True)
+        return Response({'data': serializer.data})
+
+
+class AllTrainingCoursesView(APIView):
+
+    def get(self, request):
         training_courses = TrainingCourses.objects.all()
-        serializer_clubs = AllClubsSerializers(clubs, many=True)
         serializer_courses = AllTrainingCoursesSerializers(training_courses, many=True)
-        serializer = {'serializer_courses': serializer_courses.data, 'serializer_clubs': serializer_clubs}
-        return Response({'data': serializer})
+        return Response({'data': serializer_courses.data})
+
+
+class AllEventsView(APIView):
+
+    def get(self, request):
+        events = Events.objects.all()
+        serializer = AllEventsSerializers(events, many=True)
+        return Response({'data': serializer.data})
+

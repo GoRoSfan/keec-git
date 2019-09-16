@@ -44,6 +44,8 @@ class News(models.Model):
         verbose_name = 'Новина'
         verbose_name_plural = 'Новини'
 
+        ordering = ['post_date']
+
     def display_content_types(self):
         return ', '.join([content_type.name for content_type in self.content_types.all()[:3]])
 
@@ -66,6 +68,8 @@ class Events(models.Model):
     class Meta:
         verbose_name = 'Подія'
         verbose_name_plural = 'Події'
+
+        ordering = ['date_placing']
 
     def __str__(self):
         return '{0} - {1}'.format(self.name, self.date_placing)
@@ -120,6 +124,8 @@ class Clubs(models.Model):
         verbose_name = 'Гурток'
         verbose_name_plural = 'Гуртки'
 
+        ordering = ['name']
+
     def __str__(self):
         return 'Гурток - {0} - {1}({2}). Діє {3}'.format(self.name, self.activity_type, self.members_age,
                                                          self.season_set)
@@ -142,6 +148,8 @@ class TrainingCourses(models.Model):
     class Meta:
         verbose_name = 'Підготовчий курс'
         verbose_name_plural = 'Підготовчі курси'
+
+        ordering = ['name']
 
     def __str__(self):
         return 'Курс - {0}'.format(self.name)
@@ -174,6 +182,8 @@ class Contacts(models.Model):
         verbose_name = 'Контакт'
         verbose_name_plural = 'Контакти'
 
+        ordering = ['label']
+
     def __str__(self):
         return '{0}: {1}'.format(self.label, self.content)
 
@@ -201,6 +211,8 @@ class Legals(models.Model):
     class Meta:
         verbose_name = 'Документ'
         verbose_name_plural = 'Документи'
+
+        ordering = ['name']
 
     def __str__(self):
         return self.name
