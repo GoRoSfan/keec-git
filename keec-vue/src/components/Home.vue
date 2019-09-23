@@ -44,7 +44,11 @@ export default {
 <style scoped>
   .test{
     min-height: 100px;
-    background-color: cyan ;
+    background-color: #2651ff;
+  }
+
+  .header-menu{
+    background-color: #ffc64e;
   }
 
   .content-container{
