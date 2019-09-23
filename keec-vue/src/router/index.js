@@ -26,7 +26,7 @@ export default new Router({
 
     {
       path: '/legal',
-      name: 'legels',
+      name: 'legals',
       component: Legals,
     },
 
