@@ -1,6 +1,8 @@
 <template>
   <mu-container class="main">
-    <mu-appbar justify-content="center" z-depth="0">text text text text text text text text</mu-appbar>
+    <mu-appbar justify-content="center" z-depth="0">
+      text text text text text text text text
+    </mu-appbar>
     <mu-appbar class="header-menu" z-depth="0">
       <mu-flex class="menu-list">
         <mu-flex justify-content="center" class="menu-item" fill>
@@ -20,18 +22,18 @@
         </mu-flex>
       </mu-flex>
     </mu-appbar>
-    <mu-flex class="content-container">
-      <mu-flex class="theme-container test">
-        <slot></slot>
-      </mu-flex>
-      <mu-flex justify-content="end" fill>
-        <mu-flex class="sidebar test" justify-content="start">
-          <mu-flex class="last-news"></mu-flex>
-          <mu-flex class="helpful-links"></mu-flex>
-        </mu-flex>
-      </mu-flex>
+    <div class="content-container">
+      <div class="theme-container test">
+        <slot name="main"></slot>
+      </div>
+      <div>
+        <div class="sidebar test">
+          <div class="last-news"></div>
+          <div class="helpful-links"></div>
+        </div>
+      </div>
 
-    </mu-flex>
+    </div>
   </mu-container>
 </template>
 
@@ -43,8 +45,8 @@ export default {
 
 <style scoped>
   .test{
-    min-height: 100px;
-    background-color: #2651ff;
+    /*min-height: 100px;*/
+    background-color: #bbf5ff;
   }
 
   .header-menu{
@@ -53,7 +55,6 @@ export default {
 
   .content-container{
     margin-top: 10px;
-
   }
 
   .theme-container{

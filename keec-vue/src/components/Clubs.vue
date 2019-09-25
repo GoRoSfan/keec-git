@@ -1,11 +1,11 @@
 <template>
-    
+  <div></div>
 </template>
 
 <script>
-    export default {
-        name: "Clubs"
-    }
+export default {
+  name: 'Clubs',
+};
 </script>
 
 <style scoped>

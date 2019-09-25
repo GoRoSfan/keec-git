@@ -12,6 +12,7 @@ from .serializers import AllNewsSerializers, LegalsSerializers, ContactsSerializ
 
 
 class AllNewsView(APIView):
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request):
         news = News.objects.all()
@@ -20,6 +21,7 @@ class AllNewsView(APIView):
 
 
 class LegalsView(APIView):
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request):
         legals = Legals.objects.all()
@@ -28,6 +30,7 @@ class LegalsView(APIView):
 
 
 class ContactsView(APIView):
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request):
         contacts = Contacts.objects.all()
@@ -36,6 +39,7 @@ class ContactsView(APIView):
 
 
 class AllClubsView(APIView):
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request):
         clubs = Clubs.objects.all()
@@ -44,6 +48,7 @@ class AllClubsView(APIView):
 
 
 class AllTrainingCoursesView(APIView):
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request):
         training_courses = TrainingCourses.objects.all()
@@ -52,6 +57,7 @@ class AllTrainingCoursesView(APIView):
 
 
 class AllEventsView(APIView):
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request):
         events = Events.objects.all()
