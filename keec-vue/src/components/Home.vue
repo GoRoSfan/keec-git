@@ -46,10 +46,12 @@ export default {
 <style scoped>
   .test{
     /*min-height: 100px;*/
-    background-color: #bbf5ff;
+    background-color: #fff4e1;
   }
 
   .header-menu{
+    color: #556688;
+
     background-color: #ffc64e;
   }
 
@@ -59,6 +61,11 @@ export default {
 
   .theme-container{
     width: 75%;
+
+    padding: 0;
+    margin: 0;
+    border: black solid 0px;
+
   }
 
   .sidebar{

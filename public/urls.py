@@ -6,7 +6,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
 
-    # url(r'^$', RedirectView.as_view(url='news/', permanent=False)),
+    url(r'^$', RedirectView.as_view(url='news/', permanent=False)),
 
     url(r'^news/$', views.AllNewsView.as_view(), name='all-news'),
     # url(r'^news/(?P<pk>\d+)/$', views.DetailNewsView, name='new-detail'),
