@@ -6,25 +6,29 @@
         <div class="news-header">
           <div class="news-title">{{one_new.title}}</div>
           <div class="news-date">{{one_new.post_date}}</div>
+          <div class="boxing"></div>
         </div>
         <div class="news-context">
-          <div class="news-description">{{one_new.description}}</div>
           <div class="news-image">
-            <img :src="'http://127.0.0.1:8000' + one_new.image" alt="">
+            <img :src="host + one_new.image" alt="Фотографія до новини" style="width: 100%">
           </div>
+          <div class="news-description">{{one_new.description}} {{text}}</div>
         </div>
         <div class="news-footer">
           <div class="news-detail">
-            <a :href="'http://127.0.0.1:8000' + one_new.detail">detail</a>
+            <a :href="host + one_new.detail">detail</a>
           </div>
         </div>
       </div>
+      <mu-flex justify-content="center" style="margin: 32px 0;">
+        <mu-pagination :total="50" :current.sync="current_page" @change=""></mu-pagination>
+      </mu-flex>
     </div>
   </HomeSlot>
 </template>
 
 <script>
-import HomeSlot from '../components/Home';
+import HomeSlot from './Home';
 
 export default {
   name: 'AllNews',
@@ -38,6 +42,9 @@ export default {
   data() {
     return {
       news_list: '',
+      host: window.location.protocol.concat('//127.0.0.1:8000'),
+      text: 'LA Bu dA'.repeat(30),
+      current_page: 1,
     };
   },
 
@@ -45,10 +52,18 @@ export default {
     $.ajax({
       url: 'http://127.0.0.1:8000/public/news/',
       type: 'GET',
+      data: {
+        'current_page': this.current_page,
+
+      },
       success: (response) => {
         this.news_list = response.data.data;
       },
     });
+  },
+
+  methods:{
+
   },
 };
 </script>
@@ -67,6 +82,7 @@ export default {
     text-align: center;
 
     border: #fff solid 0;
+    border-radius: 10px;
 
     background-color: #133568;
   }
@@ -76,22 +92,49 @@ export default {
 
     color: #ffd792;
 
-    border: #000 solid 1px;
-    border-left-width: 0;
-    border-right-width: 0;
+    border: #000 solid 0;
+    border-radius: 13px;
+
+
 
     background-color: #133568;
   }
 
+  .news-header{
+    background-color: #ffc64e;
+
+    color: #556688;
+
+    border: #000 solid 0;
+    border-radius: 10px 10px 0 0;
+  }
+
   .news-title{
     float: left;
+
+    margin: 0 2% 0 2%;
   }
 
   .news-date{
     float: right;
+
+    margin: 0 2% 0 2%;
+  }
+
+  .boxing{
+    clear: both;
   }
 
   .news-context{
     clear: both;
+  }
+
+  .news-image{
+    width: 30%;
+    float: right;
+  }
+
+  .news-footer{
+    clear: right;
   }
 </style>

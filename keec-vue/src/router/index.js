@@ -2,11 +2,11 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/Home';
 import AllNews from '@/components/AllNews';
-import Legals from "../components/Legals";
-import Contacts from "../components/Contacts";
-import Clubs from "../components/Clubs";
-import AllEvents from "../components/AllEvents";
-import About from "../components/About";
+import Legals from '@/components/Legals';
+import Contacts from '@/components/Contacts';
+import Clubs from '@/components/Clubs';
+import AllEvents from '@/components/AllEvents';
+import About from '@/components/About';
 
 Vue.use(Router);
 

@@ -11,7 +11,7 @@
           </mu-menu>
         </mu-flex>
         <mu-flex justify-content="center" class="menu-item" fill>
-          <mu-menu>
+          <mu-menu >
             План роботи
           </mu-menu>
         </mu-flex>
@@ -32,7 +32,6 @@
           <div class="helpful-links"></div>
         </div>
       </div>
-
     </div>
   </mu-container>
 </template>
@@ -44,11 +43,6 @@ export default {
 </script>
 
 <style scoped>
-  .test{
-    /*min-height: 100px;*/
-    background-color: #fff4e1;
-  }
-
   .header-menu{
     color: #556688;
 
@@ -57,6 +51,8 @@ export default {
 
   .content-container{
     margin-top: 10px;
+
+
   }
 
   .theme-container{

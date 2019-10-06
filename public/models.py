@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from django.utils import timezone
+from django import utils
 
 # Create your models here.
 
@@ -21,7 +21,7 @@ class ContentTypesNews(models.Model):
 class News(models.Model):
 
     title = models.CharField("Заголовок новини", max_length=300)
-    post_date = models.DateTimeField("Дата публікації", auto_now_add=True)
+    post_date = models.DateField("Дата публікації", auto_now_add=True)
     description = models.TextField("Опис новини", max_length=10000, blank=True)
     image = models.ImageField("Основне зображення новини", upload_to='image/new_image',
                               default='default/default_image_new.png')
@@ -61,7 +61,7 @@ class News(models.Model):
 class Events(models.Model):
 
     name = models.CharField("Назва події", max_length=150)
-    date_placing = models.DateTimeField("Дата проходження події", default=timezone.now())
+    date_placing = models.DateTimeField("Дата проходження події", default=utils.timezone.now)
     detail = models.FileField("Документ з детальною інформацією", upload_to='detail/event_detail/',
                               default='default/default_detail.pdf')
 

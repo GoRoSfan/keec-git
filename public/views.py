@@ -15,7 +15,7 @@ class AllNewsView(APIView):
     permission_classes = [permissions.AllowAny]
 
     def get(self, request):
-        news = News.objects.all()
+        news = News.objects.filter(id=request.GET.get('current_page'))
         serializer = AllNewsSerializers(news, many=True)
         return Response({'data': serializer.data})
 
