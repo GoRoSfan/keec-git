@@ -44,7 +44,7 @@ class News(models.Model):
         verbose_name = 'Новина'
         verbose_name_plural = 'Новини'
 
-        ordering = ['post_date']
+        ordering = ['-id']
 
     def display_content_types(self):
         return ', '.join([content_type.name for content_type in self.content_types.all()[:3]])

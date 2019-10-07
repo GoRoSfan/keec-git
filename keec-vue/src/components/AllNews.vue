@@ -21,7 +21,7 @@
         </div>
       </div>
       <mu-flex justify-content="center" style="margin: 32px 0;">
-        <mu-pagination :total="50" :current.sync="current_page" @change=""></mu-pagination>
+        <mu-pagination :total="total_news" :current.sync="current_page" @change="page_change"></mu-pagination>
       </mu-flex>
     </div>
   </HomeSlot>
@@ -45,6 +45,7 @@ export default {
       host: window.location.protocol.concat('//127.0.0.1:8000'),
       text: 'LA Bu dA'.repeat(30),
       current_page: 1,
+      total_news: 40,
     };
   },
 
@@ -63,7 +64,19 @@ export default {
   },
 
   methods:{
+    page_change: function (event) {
+      $.ajax({
+      url: 'http://127.0.0.1:8000/public/news/',
+      type: 'GET',
+      data: {
+        'current_page': this.current_page,
 
+      },
+      success: (response) => {
+        this.news_list = response.data.data;
+      },
+    });
+    }
   },
 };
 </script>

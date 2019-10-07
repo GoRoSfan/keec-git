@@ -8,6 +8,15 @@ from .models import News, Contacts, Legals, Clubs, TrainingCourses, Events
 from .serializers import AllNewsSerializers, LegalsSerializers, ContactsSerializers, AllClubsSerializers,\
     AllTrainingCoursesSerializers, AllEventsSerializers
 
+
+def paginator(model, current_page, items=2):
+    first_item = (current_page - 1) * items
+    last_item = current_page * items
+
+    model_part = model[first_item:last_item]
+
+    return model_part
+
 # Create your views here.
 
 
@@ -15,7 +24,11 @@ class AllNewsView(APIView):
     permission_classes = [permissions.AllowAny]
 
     def get(self, request):
-        news = News.objects.filter(id=request.GET.get('current_page'))
+        all_news = News.objects.all()
+        current_page = int(request.GET.get('current_page'))
+
+        news = paginator(all_news, current_page)
+
         serializer = AllNewsSerializers(news, many=True)
         return Response({'data': serializer.data})
 
