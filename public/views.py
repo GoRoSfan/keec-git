@@ -3,6 +3,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
+from rest_framework.renderers import JSONRenderer
 
 from .models import News, Contacts, Legals, Clubs, TrainingCourses, Events
 from .serializers import AllNewsSerializers, LegalsSerializers, ContactsSerializers, AllClubsSerializers,\
@@ -23,14 +24,17 @@ def paginator(model, current_page, items=2):
 class AllNewsView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get(self, request):
+    renderer_classes = [JSONRenderer]
+
+    def get(self, request, format=None):
         all_news = News.objects.all()
         current_page = int(request.GET.get('current_page'))
 
         news = paginator(all_news, current_page)
 
         serializer = AllNewsSerializers(news, many=True)
-        return Response({'data': serializer.data})
+        content = {'data': serializer.data}
+        return Response(content)
 
 
 class LegalsView(APIView):

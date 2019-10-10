@@ -58,7 +58,7 @@ export default {
 
       },
       success: (response) => {
-        this.news_list = response.data.data;
+        this.news_list = response.data;
       },
     });
   },
