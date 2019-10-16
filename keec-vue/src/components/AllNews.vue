@@ -20,10 +20,10 @@
           </div>
         </div>
       </div>
-      <mu-flex justify-content="center" style="margin: 32px 0;">
-        <mu-pagination :total="total_news" :current.sync="current_page" @change="page_change"></mu-pagination>
-      </mu-flex>
     </div>
+    <mu-flex justify-content="center" style="margin: 32px 0;">
+      <mu-pagination :total="total_news" :current.sync="current_page" @change="page_change"></mu-pagination>
+    </mu-flex>
   </HomeSlot>
 </template>
 
@@ -73,7 +73,7 @@ export default {
 
       },
       success: (response) => {
-        this.news_list = response.data.data;
+        this.news_list = response.data;
       },
     });
     }
@@ -85,7 +85,7 @@ export default {
   h1{
     margin: 0;
 
-    color: #ffd792;
+    color: #ffcc99;
     font-size: 1.25em;
   }
 
@@ -100,10 +100,23 @@ export default {
     background-color: #133568;
   }
 
+  .all-news-container{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    flex-direction: column;
+    flex-wrap: nowrap;
+    -webkit-flex-flow: column nowrap;
+
+  }
+
   .news-container{
     margin-top: 1em;
 
-    color: #ffd792;
+    color: #ffcc99;
 
     border: #000 solid 0;
     border-radius: 13px;

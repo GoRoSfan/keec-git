@@ -1,33 +1,31 @@
 <template>
-  <mu-container class="main">
-    <mu-appbar justify-content="center" z-depth="0">
-      text text text text text text text text
-    </mu-appbar>
-    <mu-appbar class="header-menu" z-depth="0">
-      <mu-flex class="menu-list">
-        <mu-flex justify-content="center" class="menu-item" fill>
-          <mu-menu>
-            Новини
-          </mu-menu>
-        </mu-flex>
-        <mu-flex justify-content="center" class="menu-item" fill>
-          <mu-menu >
-            План роботи
-          </mu-menu>
-        </mu-flex>
-        <mu-flex justify-content="center" class="menu-item" fill>
-          <mu-menu>
-            Додатково
-          </mu-menu>
-        </mu-flex>
-      </mu-flex>
-    </mu-appbar>
+  <mu-container>
+    <div class="center-name">
+      <img
+        src=""
+        alt="img"
+        class="center-name-image"
+      >
+      <h1>ХЕРСОНСЬКИЙ НАУКОВО-ДОСЛІДНИЦЬКИЙ ЦЕНТР УЧНІВСЬКОЇ ТА СТУДЕНТСЬКОЇ МОЛОДІ</h1>
+    </div>
+    <div class="menu-list">
+      <router-link tag="div" to="/news" class="menu-item">
+        <a>Новини</a>
+      </router-link>
+      <router-link tag="div" to="/events" class="menu-item">
+        <a>План роботи</a>
+      </router-link>
+      <router-link tag="div" to="/about" class="menu-item">
+        <a>Про нас</a>
+      </router-link>
+    </div>
     <div class="content-container">
-      <div class="theme-container test">
+      <div class="theme-container">
         <slot name="main"></slot>
       </div>
       <div>
-        <div class="sidebar test">
+        <div class="sidebar">
+          <div class="sub-header">Актуальна інформація</div>
           <div class="last-news"></div>
           <div class="helpful-links"></div>
         </div>
@@ -39,37 +37,105 @@
 <script>
 export default {
   name: 'Home',
+
+  data() {
+    return {
+      test_tt: 'fafa',
+    }
+  },
 };
 </script>
 
 <style scoped>
-  .header-menu{
+  .test{
+  }
+
+  .center-name{
+    display: flex;
+    flex-direction: row;
+
+    background-color: #003366;
+  }
+
+  .center-name h1{
+    padding: 0;
+    margin: 3vmin 1vmin;
+
+    font-size: 1.8vmax;
+    color: #ffcc99;
+  }
+
+  .center-name-image{
+    position: absolute;
+
+    /*z-index: 1;*/
+    /*width: 5%;*/
+  }
+
+  .menu-list{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+
+    padding: 2vmin 0;
+    margin: 0;
+
+    list-style: none;
+
     color: #556688;
+    font-size: 1.5vmax;
 
     background-color: #ffc64e;
   }
 
+  .menu-item a{
+    color: #556688;
+  }
+
   .content-container{
-    margin-top: 10px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
 
+    -webkit-flex-flow: row wrap;
+    justify-content: space-between;
 
+    margin-top: 2vw;
   }
 
   .theme-container{
-    width: 75%;
+    /*width: 50vw;*/
 
     padding: 0;
     margin: 0;
-    border: black solid 0px;
-
+    border: black solid 0;
   }
 
   .sidebar{
-    justify-self: end;
-    width: 95%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    flex-direction: column;
+    flex-wrap: nowrap;
+    -webkit-flex-flow: column nowrap;
+
+    width: 20vw;
+    min-height: 70vh;
+
+    border: black solid 0;
+
+    background-color: black;
   }
 
-  .menu-item{
-    line-height: 1.2;
-  }
+
 </style>
