@@ -1,5 +1,5 @@
 <template>
-  <mu-container>
+  <mu-container class="main">
     <div class="center-name">
       <img
         src=""
@@ -7,6 +7,11 @@
         class="center-name-image"
       >
       <h1>ХЕРСОНСЬКИЙ НАУКОВО-ДОСЛІДНИЦЬКИЙ ЦЕНТР УЧНІВСЬКОЇ ТА СТУДЕНТСЬКОЇ МОЛОДІ</h1>
+      <img
+        src=""
+        alt="img"
+        class="center-name-image"
+      >
     </div>
     <div class="menu-list">
       <router-link tag="div" to="/news" class="menu-item">
@@ -23,12 +28,11 @@
       <div class="theme-container">
         <slot name="main"></slot>
       </div>
-      <div>
-        <div class="sidebar">
-          <div class="sub-header">Актуальна інформація</div>
-          <div class="last-news"></div>
-          <div class="helpful-links"></div>
-        </div>
+      <div class="sidebar">
+        <div class="sub-header">Актуальна інформація</div>
+        <div class="last-news"></div>
+        <div class="sub-header">Корисні ресурси</div>
+        <div class="helpful-links"></div>
       </div>
     </div>
   </mu-container>
@@ -50,9 +54,29 @@ export default {
   .test{
   }
 
+  /*.main{*/
+    /*display: -webkit-box;*/
+    /*display: -moz-box;*/
+    /*display: -ms-flexbox;*/
+    /*display: -webkit-flex;*/
+    /*display: flex;*/
+
+    /*flex-direction: column;*/
+    /*flex-wrap: nowrap;*/
+    /*-webkit-flex-flow: column nowrap;*/
+
+    /*width: 90vw;*/
+  /*}*/
+
   .center-name{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
-    flex-direction: row;
+
+    -webkit-flex-flow: row wrap;
+    justify-content: center;
 
     background-color: #003366;
   }
@@ -111,7 +135,7 @@ export default {
   }
 
   .theme-container{
-    /*width: 50vw;*/
+    width: 70%;
 
     padding: 0;
     margin: 0;
@@ -129,13 +153,24 @@ export default {
     flex-wrap: nowrap;
     -webkit-flex-flow: column nowrap;
 
-    width: 20vw;
+    width: 25%;
     min-height: 70vh;
-
-    border: black solid 0;
-
-    background-color: black;
   }
 
+  .sub-header{
+    margin: 2vmin 0;
+
+    text-align: center;
+
+    border-radius: 10px 0;
+
+    color: #ffcc99;
+
+    background-color: #133568;
+  }
+
+  .sub-header:first-child{
+    margin-top: 0;
+  }
 
 </style>

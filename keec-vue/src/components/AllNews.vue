@@ -95,7 +95,7 @@ export default {
     text-align: center;
 
     border: #fff solid 0;
-    border-radius: 10px;
+    border-radius: 10px 0;
 
     background-color: #133568;
   }
