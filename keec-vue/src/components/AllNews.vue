@@ -86,15 +86,12 @@ export default {
     margin: 0;
 
     color: #ffcc99;
-    font-size: 1.25em;
+    font-size: 1.4rem;
+    font-weight: 400;
   }
 
   .info-topic{
-    padding-left: 15px;
-
     text-align: center;
-
-    border: #fff solid 0;
     border-radius: 10px 0;
 
     background-color: #133568;
@@ -110,11 +107,10 @@ export default {
     flex-direction: column;
     flex-wrap: nowrap;
     -webkit-flex-flow: column nowrap;
-
   }
 
   .news-container{
-    margin-top: 1em;
+    margin-top: 2vmin;
 
     color: #ffcc99;
 

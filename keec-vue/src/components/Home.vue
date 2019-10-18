@@ -1,5 +1,5 @@
 <template>
-  <mu-container class="main">
+  <mu-container class="main" id="main">
     <div class="center-name">
       <img
         src=""
@@ -85,7 +85,7 @@ export default {
     padding: 0;
     margin: 3vmin 1vmin;
 
-    font-size: 1.8vmax;
+    font-size: 1.5rem;
     color: #ffcc99;
   }
 
@@ -112,7 +112,7 @@ export default {
     list-style: none;
 
     color: #556688;
-    font-size: 1.5vmax;
+    font-size: 1.5rem;
 
     background-color: #ffc64e;
   }
@@ -165,12 +165,21 @@ export default {
     border-radius: 10px 0;
 
     color: #ffcc99;
+    font-size: 1.2rem;
+
+
 
     background-color: #133568;
   }
+
 
   .sub-header:first-child{
     margin-top: 0;
   }
 
+  @media (max-width: 755px){
+    .theme-container{width: 100%}
+
+    .sidebar{display: none}
+  }
 </style>
