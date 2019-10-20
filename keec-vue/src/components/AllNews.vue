@@ -1,25 +1,21 @@
 <template>
   <HomeSlot #main>
-    <div class="info-topic"><h1>Новини центру</h1></div>
+    <div class="context-header"><h2>Новини центру</h2></div>
     <div class="all-news-container">
-      <div v-for="one_new in news_list" class="news-container">
+      <article v-for="one_new in news_list" class="news-container">
         <div class="news-header">
-          <div class="news-title">{{one_new.title}}</div>
-          <div class="news-date">{{one_new.post_date}}</div>
-          <div class="boxing"></div>
+          <cite>{{one_new.title}}</cite>
+          <time>{{one_new.post_date}}</time>
         </div>
-        <div class="news-context">
-          <div class="news-image">
-            <img :src="host + one_new.image" alt="Фотографія до новини" style="width: 100%">
-          </div>
+        <div class="news-main">
+          <img :src="host + one_new.image" alt="Фотографія до новини" class="news-image">
           <div class="news-description">{{one_new.description}} {{text}}</div>
         </div>
         <div class="news-footer">
-          <div class="news-detail">
-            <a :href="host + one_new.detail">detail</a>
-          </div>
+          <div></div>
+          <mu-button id="news-detail" :href="host + one_new.detail">detail</mu-button>
         </div>
-      </div>
+      </article>
     </div>
     <mu-flex justify-content="center" style="margin: 32px 0;">
       <mu-pagination :total="total_news" :current.sync="current_page" @change="page_change"></mu-pagination>
@@ -82,19 +78,11 @@ export default {
 </script>
 
 <style scoped>
-  h1{
+  h2{
     margin: 0;
 
-    color: #ffcc99;
     font-size: 1.4rem;
     font-weight: 400;
-  }
-
-  .info-topic{
-    text-align: center;
-    border-radius: 10px 0;
-
-    background-color: #133568;
   }
 
   .all-news-container{
@@ -110,53 +98,96 @@ export default {
   }
 
   .news-container{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    flex-direction: column;
+    flex-wrap: nowrap;
+    -webkit-flex-flow: column nowrap;
+
     margin-top: 2vmin;
-
-    color: #ffcc99;
-
-    border: #000 solid 0;
-    border-radius: 13px;
-
-
-
-    background-color: #133568;
   }
 
-  .news-header{
-    background-color: #ffc64e;
+  article .news-header{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    padding: 0.8vh 2vw;
 
     color: #556688;
 
-    border: #000 solid 0;
-    border-radius: 10px 10px 0 0;
+    border-radius: 2vw 2vw 0 0;
+    border-bottom: #ffc64e solid 1px;
+
+    -webkit-box-shadow: inset 0 -1px #646464;
+    -moz-box-shadow: inset 0 -1px #646464;
+    box-shadow: inset 0 -1px #646464;
+
+    background-color: #ffc64e;
   }
 
-  .news-title{
-    float: left;
+  article .news-header cite{
+    align-self: center;
 
-    margin: 0 2% 0 2%;
+    font-style: normal;
+    font-size: 1.5rem;
   }
 
-  .news-date{
-    float: right;
+  article .news-header time{
+    align-self: start;
 
-    margin: 0 2% 0 2%;
+    font-size: 1rem;
   }
 
-  .boxing{
-    clear: both;
+  article .news-main{
+    padding: 1.5vh 1.5vw;
+
+    color: #ffcc99;
+    text-align: left;
+    font-size: 1.2rem;
+    
+    background-color: #133568;
   }
 
-  .news-context{
-    clear: both;
-  }
-
-  .news-image{
+  article .news-main .news-image{
     width: 30%;
     float: right;
   }
 
-  .news-footer{
-    clear: right;
+  article .news-footer{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+    padding: 1.5vh 0;
+
+    border-radius: 0 0 2vw 2vw;
+
+    background-color: #ffc64e;
+  }
+  
+  article .news-footer #news-detail{
+    background-color: #ffcc99;
+  }
+
+  article .news-footer #news-detail a{
+    color: #556688;
+    font-size: 1.2rem;
   }
 </style>

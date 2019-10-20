@@ -11,14 +11,21 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 5vmin;
-}
+  html {
+    min-width: 240px;
+
+    font-size: 15px;
+  }
+
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 5vmin;
+  }
+
   body{
     margin: 0;
     display: -webkit-box;
@@ -32,11 +39,15 @@ export default {
     background-color: #ffcc99;
   }
 
-  html{
-    font-size: 1vw;
+  .context-header{
+    text-align: center;
+    color: #ffcc99;
+
+    border-radius: 2.5vw 0;
+    background-color: #133568;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1180px) {
     html{font-size: 12px;}
   }
 

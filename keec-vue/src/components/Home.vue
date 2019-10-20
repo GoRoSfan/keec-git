@@ -1,6 +1,6 @@
 <template>
-  <mu-container class="main" id="main">
-    <div class="center-name">
+  <mu-container class="main">
+    <header>
       <img
         src=""
         alt="img"
@@ -12,8 +12,8 @@
         alt="img"
         class="center-name-image"
       >
-    </div>
-    <div class="menu-list">
+    </header>
+    <nav class="menu-list">
       <router-link tag="div" to="/news" class="menu-item">
         <a>Новини</a>
       </router-link>
@@ -23,18 +23,23 @@
       <router-link tag="div" to="/about" class="menu-item">
         <a>Про нас</a>
       </router-link>
-    </div>
+    </nav>
     <div class="content-container">
-      <div class="theme-container">
+      <main>
         <slot name="main"></slot>
-      </div>
-      <div class="sidebar">
-        <div class="sub-header">Актуальна інформація</div>
+      </main>
+      <aside>
+        <div class="context-header">
+          <span>Актуальна інформація</span>
+        </div>
         <div class="last-news"></div>
-        <div class="sub-header">Корисні ресурси</div>
+        <div class="context-header">
+          <span>Корисні ресурси</span>
+        </div>
         <div class="helpful-links"></div>
-      </div>
+      </aside>
     </div>
+    <footer></footer>
   </mu-container>
 </template>
 
@@ -68,7 +73,7 @@ export default {
     /*width: 90vw;*/
   /*}*/
 
-  .center-name{
+  header{
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -81,11 +86,12 @@ export default {
     background-color: #003366;
   }
 
-  .center-name h1{
+  header h1{
     padding: 0;
-    margin: 3vmin 1vmin;
+    margin: 2vh 1vw;
 
     font-size: 1.5rem;
+    font-weight: 500;
     color: #ffcc99;
   }
 
@@ -106,7 +112,7 @@ export default {
     -webkit-flex-flow: row wrap;
     justify-content: space-around;
 
-    padding: 2vmin 0;
+    padding: 1.5vh 0;
     margin: 0;
 
     list-style: none;
@@ -134,15 +140,14 @@ export default {
     margin-top: 2vw;
   }
 
-  .theme-container{
+  main{
     width: 70%;
 
     padding: 0;
     margin: 0;
-    border: black solid 0;
   }
 
-  .sidebar{
+  aside{
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -157,29 +162,19 @@ export default {
     min-height: 70vh;
   }
 
-  .sub-header{
-    margin: 2vmin 0;
+  aside .context-header{
+    margin: 1.5vh 0;
 
-    text-align: center;
-
-    border-radius: 10px 0;
-
-    color: #ffcc99;
     font-size: 1.2rem;
-
-
-
-    background-color: #133568;
   }
 
-
-  .sub-header:first-child{
+  .context-header:first-child{
     margin-top: 0;
   }
 
   @media (max-width: 755px){
-    .theme-container{width: 100%}
+    main{width: 100%}
 
-    .sidebar{display: none}
+    aside{display: none}
   }
 </style>
