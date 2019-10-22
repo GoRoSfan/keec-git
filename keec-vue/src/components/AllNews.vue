@@ -2,7 +2,11 @@
   <HomeSlot #main>
     <div class="context-header"><h2>Новини центру</h2></div>
     <div class="all-news-container">
-      <article v-for="one_new in news_list" class="news-container">
+      <article
+        v-for="one_new in news_list"
+        :one_new="one_new"
+        class="news-container"
+      >
         <div class="news-header">
           <cite>{{one_new.title}}</cite>
           <time>{{one_new.post_date}}</time>
@@ -18,7 +22,12 @@
       </article>
     </div>
     <mu-flex justify-content="center" style="margin: 32px 0;">
-      <mu-pagination :total="total_news" :current.sync="current_page" @change="page_change"></mu-pagination>
+      <mu-pagination
+        :total="total_news"
+        :current.sync="current_page"
+        :page-size="page_size"
+        @change="page_change"
+      ></mu-pagination>
     </mu-flex>
   </HomeSlot>
 </template>
@@ -41,7 +50,8 @@ export default {
       host: window.location.protocol.concat('//127.0.0.1:8000'),
       text: 'LA Bu dA'.repeat(30),
       current_page: 1,
-      total_news: 40,
+      total_news: 10,
+      page_size: 10,
     };
   },
 
@@ -55,24 +65,27 @@ export default {
       },
       success: (response) => {
         this.news_list = response.data;
+        this.total_news = response.total_news;
+        this.page_size = response.page_size;
       },
     });
   },
 
-  methods:{
-    page_change: function (event) {
-      $.ajax({
-      url: 'http://127.0.0.1:8000/public/news/',
-      type: 'GET',
-      data: {
-        'current_page': this.current_page,
+  methods: {
 
-      },
-      success: (response) => {
-        this.news_list = response.data;
-      },
-    });
-    }
+    page_change: function () {
+      $.ajax({
+        url: 'http://127.0.0.1:8000/public/news/',
+        type: 'GET',
+        data: {
+          'current_page': this.current_page,
+
+        },
+        success: (response) => {
+          this.news_list = response.data;
+        },
+      });
+    },
   },
 };
 </script>
@@ -108,7 +121,7 @@ export default {
     flex-wrap: nowrap;
     -webkit-flex-flow: column nowrap;
 
-    margin-top: 2vmin;
+    margin: 2vh 0;
   }
 
   article .news-header{

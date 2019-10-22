@@ -1,3 +1,5 @@
+import math
+
 from django.shortcuts import render
 
 from rest_framework.views import APIView
@@ -27,13 +29,16 @@ class AllNewsView(APIView):
     renderer_classes = [JSONRenderer]
 
     def get(self, request, format=None):
-        all_news = News.objects.all()
+        page_size = 3
         current_page = int(request.GET.get('current_page'))
+        all_news = News.objects.all()
 
-        news = paginator(all_news, current_page)
+        response_news = paginator(all_news, current_page, page_size)
+        serializer = AllNewsSerializers(response_news, many=True)
 
-        serializer = AllNewsSerializers(news, many=True)
-        content = {'data': serializer.data}
+        total_news = all_news.count()
+
+        content = {'data': serializer.data, 'total_news': total_news, 'page_size': page_size}
         return Response(content)
 
 

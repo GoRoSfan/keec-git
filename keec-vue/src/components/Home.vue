@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       test_tt: 'fafa',
-    }
+    };
   },
 };
 </script>
@@ -137,7 +137,7 @@ export default {
     -webkit-flex-flow: row wrap;
     justify-content: space-between;
 
-    margin-top: 2vw;
+    margin-top: 2vh;
   }
 
   main{
