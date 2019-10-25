@@ -69,7 +69,7 @@ class Events(models.Model):
         verbose_name = 'Подія'
         verbose_name_plural = 'Події'
 
-        ordering = ['date_placing']
+        ordering = ['-date_placing']
 
     def __str__(self):
         return '{0} - {1}'.format(self.name, self.date_placing)

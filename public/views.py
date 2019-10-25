@@ -81,8 +81,12 @@ class AllTrainingCoursesView(APIView):
 class AllEventsView(APIView):
     permission_classes = [permissions.AllowAny]
 
+    renderer_classes = [JSONRenderer]
+
     def get(self, request):
         events = Events.objects.all()
         serializer = AllEventsSerializers(events, many=True)
-        return Response({'data': serializer.data})
+
+        content = {'data': serializer.data}
+        return Response(content)
 

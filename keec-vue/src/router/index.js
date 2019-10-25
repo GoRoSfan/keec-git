@@ -4,7 +4,6 @@ import Home from '@/components/Home';
 import AllNews from '@/components/AllNews';
 import Legals from '@/components/Legals';
 import Contacts from '@/components/Contacts';
-import Clubs from '@/components/Clubs';
 import AllEvents from '@/components/AllEvents';
 import About from '@/components/About';
 
@@ -34,12 +33,6 @@ export default new Router({
       path: '/contact',
       name: 'contacts',
       component: Contacts,
-    },
-
-    {
-      path: '/clubs',
-      name: 'clubs',
-      component: Clubs,
     },
 
     {

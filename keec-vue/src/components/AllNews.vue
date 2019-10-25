@@ -17,7 +17,7 @@
         </div>
         <div class="news-footer">
           <div></div>
-          <mu-button id="news-detail" :href="host + one_new.detail">detail</mu-button>
+          <button class="news-detail"><a :href="host + one_new.detail">Детальніше...</a></button>
         </div>
       </article>
     </div>
@@ -91,13 +91,6 @@ export default {
 </script>
 
 <style scoped>
-  h2{
-    margin: 0;
-
-    font-size: 1.4rem;
-    font-weight: 400;
-  }
-
   .all-news-container{
     display: -webkit-box;
     display: -moz-box;
@@ -178,29 +171,21 @@ export default {
   }
 
   article .news-footer{
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
+    text-align: left;
 
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    justify-content: space-around;
-
-    padding: 1.5vh 0;
+    padding: 1.5vh 2vw;
 
     border-radius: 0 0 2vw 2vw;
 
     background-color: #ffc64e;
   }
   
-  article .news-footer #news-detail{
+  article .news-footer .news-detail{
     background-color: #ffcc99;
   }
 
-  article .news-footer #news-detail a{
-    color: #556688;
-    font-size: 1.2rem;
+  article .news-footer .news-detail a{
+    color: #000;
+    font-size: 1.1rem;
   }
 </style>

@@ -8,7 +8,8 @@ import MuseUI from 'muse-ui';
 import 'muse-ui/dist/muse-ui.css';
 import theme from 'muse-ui/lib/theme';
 
-Vue.use(MuseUI);
+Vue.use(MuseUI.Grid);
+Vue.use(MuseUI.Pagination);
 
 theme.add('keec_theme', {
   primary: '#556688',

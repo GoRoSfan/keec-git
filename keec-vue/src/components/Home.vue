@@ -163,6 +163,7 @@ export default {
   }
 
   aside .context-header{
+    display: none;
     margin: 1.5vh 0;
 
     font-size: 1.2rem;

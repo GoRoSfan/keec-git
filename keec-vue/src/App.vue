@@ -17,14 +17,6 @@ export default {
     font-size: 15px;
   }
 
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 5vmin;
-  }
 
   body{
     margin: 0;
@@ -37,6 +29,22 @@ export default {
     justify-content: center;
 
     background-color: #ffcc99;
+  }
+
+  h2{
+    margin: 0;
+
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 5vmin;
   }
 
   .context-header{
