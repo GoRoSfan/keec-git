@@ -14,52 +14,46 @@
       >
     </header>
     <nav class="main-menu-list">
-      <div class="main-menu-item">
-        <router-link tag="div" to="/news">
-          <div class="menu-item-name">Новини</div>
-        </router-link>
-      </div>
-      <div class="main-menu-item">
-        <router-link tag="div" to="/about">
-          <div class="menu-item-name">Про нас</div>
-        </router-link>
+      <router-link tag="div" to="/news" class="main-menu-item">
+        <div class="menu-item-name">Новини</div>
+      </router-link>
+      <router-link tag="div" to="/about" class="main-menu-item">
+        <div class="menu-item-name">Про нас</div>
         <div class="sub-menu-list sub-menu-about">
-          <router-link tag="div" to="/events">
-            <a>Плани</a>
+          <router-link tag="div" to="/events" class="sub-menu-item">
+            <div class="menu-item-name">Плани</div>
           </router-link>
-          <router-link tag="div" to="/edumaterials">
-            <a>Навчальні матеріали</a>
+          <router-link tag="div" to="/edumaterials" class="sub-menu-item">
+            <div class="menu-item-name">Навчальні матеріали</div>
           </router-link>
-          <router-link tag="div" to="/partners">
-            <a>Партнери</a>
+          <router-link tag="div" to="/partners" class="sub-menu-item">
+            <div class="menu-item-name">Партнери</div>
           </router-link>
-          <router-link tag="div" to="/team">
-            <a>Каманда</a>
+          <router-link tag="div" to="/team" class="sub-menu-item">
+            <div class="menu-item-name">Каманда</div>
           </router-link>
-          <router-link tag="div" to="/contact">
-            <a>Контакти</a>
+          <router-link tag="div" to="/contact" class="sub-menu-item">
+            <div class="menu-item-name">Контакти</div>
           </router-link>
         </div>
-      </div>
+      </router-link>
       <div class="main-menu-item">
         <div class="menu-item-name">Учасникам</div>
         <div class="sub-menu-list sub-menu-members">
-          <router-link tag="div" to="/for_students">
-            <a>Студентам</a>
+          <router-link tag="div" to="/for_students" class="sub-menu-item">
+            <div class="menu-item-name">Студентам</div>
           </router-link>
-          <router-link tag="div" to="/for_parents">
-            <a>Батькам</a>
+          <router-link tag="div" to="/for_parents" class="sub-menu-item">
+            <div class="menu-item-name">Батькам</div>
           </router-link>
-          <router-link tag="div" to="/for_partners">
-            <a>Партнерам</a>
+          <router-link tag="div" to="/for_partners" class="sub-menu-item">
+            <div class="menu-item-name">Партнерам</div>
           </router-link>
         </div>
       </div>
-      <div class="main-menu-item">
-        <router-link tag="div" to="/legals">
-          <div class="menu-item-name">Правова база</div>
-        </router-link>
-      </div>
+      <router-link tag="div" to="/legals" class="main-menu-item">
+        <div class="menu-item-name">Правова база</div>
+      </router-link>
     </nav>
     <div class="content-container">
       <main>
@@ -159,23 +153,23 @@
     background-color: #ffc64e;
   }
 
-  .main-menu-list .main-menu-item{
+  .main-menu-list .main-menu-item {
     padding: 1.5vh 0;
   }
 
-  .main-menu-list .main-menu-item:hover{
+  .main-menu-list .main-menu-item:hover {
     padding: 1.5vh 5vw;
 
     background-color: #ffa453;
   }
 
-  .main-menu-list .menu-item-name{
+  .main-menu-list .menu-item-name {
     color: #556688;
 
     cursor: pointer;
   }
 
-  .main-menu-list a{
+  .main-menu-list a {
     color: #ffcc99;
   }
 
@@ -192,8 +186,7 @@
     text-align: left;
 
 
-    background-color: #003366;
-;
+    background-color: #003366;;
 
     z-index: 10;
 
