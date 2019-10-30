@@ -10,7 +10,7 @@
 
 
 export default {
-  name: 'AllEvents',
+  name: 'Contacts',
 
   components: {
     HomeSlot,

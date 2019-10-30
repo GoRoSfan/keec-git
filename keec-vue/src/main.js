@@ -12,15 +12,17 @@ Vue.use(MuseUI.Grid);
 Vue.use(MuseUI.Pagination);
 
 theme.add('keec_theme', {
-  primary: '#556688',
+  primary: '#3914AF',
+  
   text: {
-    primary: '#ffcc99',
-    secondary: '#556688',
+    primary: '#FFD300',
+    secondary: '#A68900',
+    alternate: '#3914AF',
   },
   background: {
-    paper: '#ffc64e',
-    chip: '#556688',
-    default: '#ffcc99',
+    paper: '#200772',
+    chip: '#FFDE40',
+    default: '#FFE773',
   },
 }, 'light');
 
