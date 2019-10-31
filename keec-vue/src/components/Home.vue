@@ -51,7 +51,7 @@
           </router-link>
         </div>
       </div>
-      <router-link tag="div" to="/legals" class="main-menu-item">
+      <router-link tag="div" to="/legal" class="main-menu-item">
         <div class="menu-item-name">Правова база</div>
       </router-link>
     </nav>
@@ -141,7 +141,7 @@
     display: flex;
 
     -webkit-flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: stretch;
 
     margin: 0;
 
@@ -154,7 +154,23 @@
   }
 
   .main-menu-list .main-menu-item {
-    padding: 1.5vh 0;
+    position: relative;
+
+    padding: 1.5vh 2vw;
+
+    border: solid #000 0;
+    border-right-width: 3px;
+
+    cursor: pointer;
+
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+  }
+
+  .main-menu-list .main-menu-item:first-child {
+    border-left-width: 3px;
   }
 
   .main-menu-list .main-menu-item:hover {
@@ -165,27 +181,19 @@
 
   .main-menu-list .menu-item-name {
     color: #556688;
-
-    cursor: pointer;
-  }
-
-  .main-menu-list a {
-    color: #ffcc99;
   }
 
   .main-menu-list .sub-menu-list {
     visibility: hidden;
     opacity: 0;
 
-    display: none;
-
     position: absolute;
+    top: 100%;
+    left: 0;
 
-    margin-top: 0;
+    width: 100%;
 
     text-align: left;
-
-
     background-color: #003366;;
 
     z-index: 10;
@@ -196,13 +204,27 @@
     transition: 0.5s ease-in-out;
   }
 
-  .main-menu-list .main-menu-item:hover .sub-menu-list,
-  .main-menu-list .main-menu-item .sub-menu-list:hover {
-
+  .main-menu-list .main-menu-item:hover .sub-menu-list {
     visibility: visible;
     opacity: 1;
-    display: block;
+  }
 
+  .main-menu-list .sub-menu-item {
+    padding: 1vh 1vw;
+
+    border-bottom: 2px solid #fff;
+
+    cursor: pointer;
+  }
+
+  .main-menu-list .sub-menu-item:hover{
+    padding: 2vh 1vw;
+
+    background-color: #002953;
+  }
+  
+  .main-menu-list .sub-menu-item .menu-item-name{
+    color: #ffcc99;
   }
 
   .content-container {
