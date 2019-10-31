@@ -9,17 +9,17 @@
   import HomeSlot from './Home';
 
 
-export default {
-  name: 'AllEvents',
+  export default {
+    name: 'AllEvents',
 
-  components: {
-    HomeSlot,
-  },
+    components: {
+      HomeSlot,
+    },
 
-  data: function () {
-    return {}
-  },
-};
+    data: function () {
+      return {}
+    },
+  };
 </script>
 
 <style scoped>

@@ -33,47 +33,29 @@
 </template>
 
 <script>
-import HomeSlot from './Home';
+  import HomeSlot from './Home';
 
-export default {
-  name: 'AllNews',
+  export default {
+    name: 'AllNews',
 
-  components: {
+    components: {
 
-    HomeSlot,
+      HomeSlot,
 
-  },
+    },
 
-  data() {
-    return {
-      news_list: '',
-      host: window.location.protocol.concat('//127.0.0.1:8000'),
-      text: 'LA Bu dA'.repeat(30),
-      current_page: 1,
-      total_news: 10,
-      page_size: 10,
-    };
-  },
+    data() {
+      return {
+        news_list: '',
+        host: window.location.protocol.concat('//127.0.0.1:8000'),
+        text: 'LA Bu dA'.repeat(30),
+        current_page: 1,
+        total_news: 10,
+        page_size: 10,
+      };
+    },
 
-  created() {
-    $.ajax({
-      url: 'http://127.0.0.1:8000/public/news/',
-      type: 'GET',
-      data: {
-        'current_page': this.current_page,
-
-      },
-      success: (response) => {
-        this.news_list = response.data;
-        this.total_news = response.total_news;
-        this.page_size = response.page_size;
-      },
-    });
-  },
-
-  methods: {
-
-    page_change: function () {
+    created() {
       $.ajax({
         url: 'http://127.0.0.1:8000/public/news/',
         type: 'GET',
@@ -83,15 +65,33 @@ export default {
         },
         success: (response) => {
           this.news_list = response.data;
+          this.total_news = response.total_news;
+          this.page_size = response.page_size;
         },
       });
     },
-  },
-};
+
+    methods: {
+
+      page_change: function () {
+        $.ajax({
+          url: 'http://127.0.0.1:8000/public/news/',
+          type: 'GET',
+          data: {
+            'current_page': this.current_page,
+
+          },
+          success: (response) => {
+            this.news_list = response.data;
+          },
+        });
+      },
+    },
+  };
 </script>
 
 <style scoped>
-  .all-news-container{
+  .all-news-container {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -103,7 +103,7 @@ export default {
     -webkit-flex-flow: column nowrap;
   }
 
-  .news-container{
+  .news-container {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -117,7 +117,7 @@ export default {
     margin: 2vh 0;
   }
 
-  article .news-header{
+  article .news-header {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -142,35 +142,35 @@ export default {
     background-color: #ffc64e;
   }
 
-  article .news-header cite{
+  article .news-header cite {
     align-self: center;
 
     font-style: normal;
     font-size: 1.5rem;
   }
 
-  article .news-header time{
+  article .news-header time {
     align-self: start;
 
     font-size: 1rem;
   }
 
-  article .news-main{
+  article .news-main {
     padding: 1.5vh 1.5vw;
 
     color: #ffcc99;
     text-align: left;
     font-size: 1.2rem;
-    
+
     background-color: #133568;
   }
 
-  article .news-main .news-image{
+  article .news-main .news-image {
     width: 30%;
     float: right;
   }
 
-  article .news-footer{
+  article .news-footer {
     text-align: left;
 
     padding: 1.5vh 2vw;
@@ -179,12 +179,12 @@ export default {
 
     background-color: #ffc64e;
   }
-  
-  article .news-footer .news-detail{
+
+  article .news-footer .news-detail {
     background-color: #ffcc99;
   }
 
-  article .news-footer .news-detail a{
+  article .news-footer .news-detail a {
     color: #000;
     font-size: 1.1rem;
   }

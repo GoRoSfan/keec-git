@@ -1,13 +1,13 @@
 <template>
-    <div class="main-container">
+  <div class="main-container">
 
-    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "Pagination"
-    }
+  export default {
+    name: "Pagination"
+  }
 </script>
 
 <style scoped>
