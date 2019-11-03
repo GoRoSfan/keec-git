@@ -27,8 +27,6 @@ export default {
     display: flex;
 
     justify-content: center;
-
-    background-color: #ffcc99;
   }
 
   h2{
@@ -43,16 +41,16 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #FFE773;
     margin-top: 5vmin;
   }
 
   .context-header{
     text-align: center;
-    color: #ffcc99;
+    color: #FFE773;
 
     border-radius: 2.5vw 0;
-    background-color: #133568;
+    background-color: #311491;
   }
 
   @media (max-width: 1180px) {

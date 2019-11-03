@@ -10,18 +10,21 @@ import theme from 'muse-ui/lib/theme';
 
 Vue.use(MuseUI.Grid);
 Vue.use(MuseUI.Pagination);
+Vue.use(MuseUI.theme);
+Vue.use(MuseUI.Colors);
+
 
 theme.add('keec_theme', {
-  primary: '#3914AF',
-  
+  primary: '#FFD300',
+  secondary: '#FFAA00',
   text: {
-    primary: '#FFD300',
-    secondary: '#A68900',
-    alternate: '#3914AF',
+    primary: '#FFE773',
+    secondary: '#3914AF',
+    alternate: '#6C8CD5',
   },
   background: {
-    paper: '#200772',
-    chip: '#FFDE40',
+    paper: '#311491',
+    chip: '#7109AA',
     default: '#FFE773',
   },
 }, 'light');

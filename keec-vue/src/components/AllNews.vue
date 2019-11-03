@@ -21,7 +21,7 @@
         </div>
       </article>
     </div>
-    <mu-flex justify-content="center" style="margin: 32px 0;">
+    <mu-flex justify-content="center" style="margin: 2vh 0;">
       <mu-pagination
         :total="total_news"
         :current.sync="current_page"
@@ -130,16 +130,16 @@
 
     padding: 0.8vh 2vw;
 
-    color: #556688;
+    color: #3914AF;
 
     border-radius: 2vw 2vw 0 0;
-    border-bottom: #ffc64e solid 1px;
+    border-bottom: #FFD300 solid 1px;
 
     -webkit-box-shadow: inset 0 -1px #646464;
     -moz-box-shadow: inset 0 -1px #646464;
     box-shadow: inset 0 -1px #646464;
 
-    background-color: #ffc64e;
+    background-color: #FFD300;
   }
 
   article .news-header cite {
@@ -158,11 +158,11 @@
   article .news-main {
     padding: 1.5vh 1.5vw;
 
-    color: #ffcc99;
+    color: #FFE773;
     text-align: left;
     font-size: 1.2rem;
 
-    background-color: #133568;
+    background-color: #311491;
   }
 
   article .news-main .news-image {
@@ -177,11 +177,11 @@
 
     border-radius: 0 0 2vw 2vw;
 
-    background-color: #ffc64e;
+    background-color: #FFD300;
   }
 
   article .news-footer .news-detail {
-    background-color: #ffcc99;
+    background-color: #FFE773;
   }
 
   article .news-footer .news-detail a {

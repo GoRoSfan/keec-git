@@ -114,7 +114,7 @@
     -webkit-flex-flow: row wrap;
     justify-content: center;
 
-    background-color: #003366;
+    background-color: #311491;
   }
 
   header h1 {
@@ -123,10 +123,11 @@
 
     font-size: 1.5rem;
     font-weight: 500;
-    color: #ffcc99;
+    color: #FFE773;
   }
 
   header .center-name-image {
+    display: none;
     position: absolute;
 
     /*z-index: 1;*/
@@ -147,10 +148,10 @@
 
     list-style: none;
 
-    color: #556688;
+    color: #3914AF;
     font-size: 1.3rem;
 
-    background-color: #ffc64e;
+    background-color: #FFD300;
   }
 
   .main-menu-list .main-menu-item {
@@ -176,11 +177,11 @@
   .main-menu-list .main-menu-item:hover {
     padding: 1.5vh 5vw;
 
-    background-color: #ffa453;
+    background-color: #FFAA00;
   }
 
   .main-menu-list .menu-item-name {
-    color: #556688;
+    color: #3914AF;
   }
 
   .main-menu-list .sub-menu-list {
@@ -194,7 +195,7 @@
     width: 100%;
 
     text-align: left;
-    background-color: #003366;;
+    background-color: #311491;
 
     z-index: 10;
 
@@ -220,11 +221,11 @@
   .main-menu-list .sub-menu-item:hover{
     padding: 2vh 1vw;
 
-    background-color: #002953;
+    background-color: #7109AA;
   }
   
   .main-menu-list .sub-menu-item .menu-item-name{
-    color: #ffcc99;
+    color: #FFE773;
   }
 
   .content-container {
