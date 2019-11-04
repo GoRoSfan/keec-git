@@ -7,18 +7,17 @@
         :one_new="one_new"
         class="news-container"
       >
-        <div class="news-header">
+        <header class="news-header">
           <cite>{{one_new.title}}</cite>
           <time>{{one_new.post_date}}</time>
-        </div>
-        <div class="news-main">
+        </header>
+        <main class="news-main">
           <img :src="host + one_new.image" alt="Фотографія до новини" class="news-image">
           <div class="news-description">{{one_new.description}} {{text}}</div>
-        </div>
-        <div class="news-footer">
-          <div></div>
+        </main>
+        <footer class="news-footer">
           <button class="news-detail"><a :href="host + one_new.detail">Детальніше...</a></button>
-        </div>
+        </footer>
       </article>
     </div>
     <mu-flex justify-content="center" style="margin: 2vh 0;">
@@ -103,7 +102,7 @@
     -webkit-flex-flow: column nowrap;
   }
 
-  .news-container {
+  .all-news-container article {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -117,7 +116,7 @@
     margin: 2vh 0;
   }
 
-  article .news-header {
+  .all-news-container header {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -142,20 +141,20 @@
     background-color: #FFD300;
   }
 
-  article .news-header cite {
+  .all-news-container .news-header cite {
     align-self: center;
 
     font-style: normal;
     font-size: 1.5rem;
   }
 
-  article .news-header time {
+  .all-news-container .news-header time {
     align-self: start;
 
     font-size: 1rem;
   }
 
-  article .news-main {
+  .all-news-container main {
     padding: 1.5vh 1.5vw;
 
     color: #FFE773;
@@ -165,12 +164,12 @@
     background-color: #311491;
   }
 
-  article .news-main .news-image {
+  .all-news-container .news-main img {
     width: 30%;
     float: right;
   }
 
-  article .news-footer {
+  .all-news-container footer {
     text-align: left;
 
     padding: 1.5vh 2vw;
@@ -180,11 +179,11 @@
     background-color: #FFD300;
   }
 
-  article .news-footer .news-detail {
+  .all-news-container .news-footer .news-detail {
     background-color: #FFE773;
   }
 
-  article .news-footer .news-detail a {
+  .all-news-container .news-footer .news-detail a {
     color: #000;
     font-size: 1.1rem;
   }

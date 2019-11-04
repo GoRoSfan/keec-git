@@ -60,10 +60,12 @@
         <slot name="main"></slot>
       </main>
       <aside>
-        <div class="context-header">
-          <span>Актуальна інформація</span>
+        <div class="context-header">Актуальна інформація</div>
+        <div class="last-news">
+          <ContentBlock v-for="one_last in last_list">
+
+          </ContentBlock>
         </div>
-        <div class="last-news"></div>
         <div class="context-header">
           <span>Корисні ресурси</span>
         </div>
@@ -75,12 +77,23 @@
 </template>
 
 <script>
+  import ContentBlock from './ContentBlock';
+
   export default {
     name: 'Home',
+
+    components: {
+      ContentBlock,
+    },
+
+    props: {
+
+    },
 
     data() {
       return {
         test_tt: 'fafa',
+        last_list: '',
       };
     },
   };
@@ -104,7 +117,7 @@
   /*width: 90vw;*/
   /*}*/
 
-  header {
+  .main > header {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -117,7 +130,7 @@
     background-color: #311491;
   }
 
-  header h1 {
+  .main > header h1 {
     padding: 0;
     margin: 2vh 1vw;
 
@@ -126,7 +139,7 @@
     color: #FFE773;
   }
 
-  header .center-name-image {
+  .main > header .center-name-image {
     display: none;
     position: absolute;
 
@@ -218,13 +231,13 @@
     cursor: pointer;
   }
 
-  .main-menu-list .sub-menu-item:hover{
+  .main-menu-list .sub-menu-item:hover {
     padding: 2vh 1vw;
 
     background-color: #7109AA;
   }
-  
-  .main-menu-list .sub-menu-item .menu-item-name{
+
+  .main-menu-list .sub-menu-item .menu-item-name {
     color: #FFE773;
   }
 
@@ -241,14 +254,14 @@
     margin-top: 2vh;
   }
 
-  main {
+  .content-container > main {
     width: 70%;
 
     padding: 0;
     margin: 0;
   }
 
-  aside {
+  .content-container > aside {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -263,23 +276,22 @@
     min-height: 70vh;
   }
 
-  aside .context-header {
-    display: none;
+  .content-container > aside .context-header {
     margin: 1.5vh 0;
 
     font-size: 1.2rem;
   }
 
-  .context-header:first-child {
+  .content-container > aside .context-header:first-child {
     margin-top: 0;
   }
 
   @media (max-width: 755px) {
-    main {
+    content-container > main {
       width: 100%
     }
 
-    aside {
+    content-container > aside {
       display: none
     }
   }

@@ -37,12 +37,14 @@ export default {
   }
 
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #FFE773;
+
     margin-top: 5vmin;
+
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    color: #FFE773;
+    text-align: center;
   }
 
   .context-header{

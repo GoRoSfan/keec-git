@@ -10,9 +10,6 @@ import theme from 'muse-ui/lib/theme';
 
 Vue.use(MuseUI.Grid);
 Vue.use(MuseUI.Pagination);
-Vue.use(MuseUI.theme);
-Vue.use(MuseUI.Colors);
-
 
 theme.add('keec_theme', {
   primary: '#FFD300',
