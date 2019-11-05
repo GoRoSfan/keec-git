@@ -62,9 +62,10 @@
       <aside>
         <div class="context-header">Актуальна інформація</div>
         <div class="last-news">
-          <ContentBlock v-for="one_last in last_list">
-
-          </ContentBlock>
+          <ContentBlock
+            v-for="one_last in last_list"
+            :block="one_last"
+          ></ContentBlock>
         </div>
         <div class="context-header">
           <span>Корисні ресурси</span>
@@ -92,17 +93,29 @@
 
     data() {
       return {
-        test_tt: 'fafa',
         last_list: '',
       };
     },
+
+    created() {
+      $.ajax({
+        url: 'http://127.0.0.1:8000/public/news/',
+        type: 'GET',
+        data: {
+          'current_page': 1,
+
+        },
+        success: (response) => {
+          this.last_list = response.data;
+          this.total_news = response.total_news;
+          this.page_size = response.page_size;
+        },
+      });
+    }
   };
 </script>
 
 <style scoped>
-  .test {
-  }
-
   /*.main{*/
   /*display: -webkit-box;*/
   /*display: -moz-box;*/
@@ -286,12 +299,16 @@
     margin-top: 0;
   }
 
-  @media (max-width: 755px) {
-    content-container > main {
+  /deep/ .last-news .block-container header time {
+    display: none;
+  }
+
+  @media (max-width: 767.5px) {
+    .content-container > main {
       width: 100%
     }
 
-    content-container > aside {
+    .content-container > aside {
       display: none
     }
   }

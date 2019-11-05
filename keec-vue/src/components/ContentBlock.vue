@@ -18,9 +18,11 @@
   export default {
     name: "ContentBlock",
 
+    props: ['block'],
+
     data: function () {
       return {
-        'block': '',
+        host: window.location.protocol.concat('//127.0.0.1:8000'),
       };
     },
 
@@ -43,7 +45,7 @@
     margin: 2vh 0;
   }
 
-  .all-news-container header {
+  .block-container header {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -68,20 +70,20 @@
     background-color: #FFD300;
   }
 
-  .all-news-container .news-header cite {
+  .block-container header cite {
     align-self: center;
 
     font-style: normal;
     font-size: 1.5rem;
   }
 
-  .all-news-container .news-header time {
+  .block-container header time {
     align-self: start;
 
     font-size: 1rem;
   }
 
-  .all-news-container main {
+  .block-container main {
     padding: 1.5vh 1.5vw;
 
     color: #FFE773;
@@ -91,12 +93,12 @@
     background-color: #311491;
   }
 
-  .all-news-container .news-main img {
+  .block-container main img {
     width: 30%;
     float: right;
   }
 
-  .all-news-container footer {
+  .block-container footer {
     text-align: left;
 
     padding: 1.5vh 2vw;
@@ -106,11 +108,11 @@
     background-color: #FFD300;
   }
 
-  .all-news-container .news-footer .news-detail {
+  .block-container footer button {
     background-color: #FFE773;
   }
 
-  .all-news-container .news-footer .news-detail a {
+  .block-container footer button a {
     color: #000;
     font-size: 1.1rem;
   }
