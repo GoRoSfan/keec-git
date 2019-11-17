@@ -15,9 +15,7 @@
           <img :src="host + one_new.image" alt="Фотографія до новини" class="news-image">
           <div class="news-description">{{one_new.description}} {{text}}</div>
         </main>
-        <footer class="news-footer">
-          <button class="news-detail"><a :href="host + one_new.detail">Детальніше...</a></button>
-        </footer>
+        <footer class="news-footer" @click="go_to_detail(host + one_new.detail)">Детальніше</footer>
       </article>
     </div>
     <mu-flex justify-content="center" style="margin: 2vh 0;">
@@ -84,6 +82,10 @@
             this.news_list = response.data;
           },
         });
+      },
+
+      go_to_detail: function (link) {
+        location.href = link;
       },
     },
   };
@@ -170,21 +172,20 @@
   }
 
   .all-news-container footer {
-    text-align: left;
+    text-align: center;
 
     padding: 1.5vh 2vw;
-
     border-radius: 0 0 2vw 2vw;
 
+    color: #3914AF;
+    font-size: 1.4rem;
+
     background-color: #FFD300;
+
+    cursor: pointer;
   }
 
-  .all-news-container .news-footer .news-detail {
-    background-color: #FFE773;
-  }
-
-  .all-news-container .news-footer .news-detail a {
-    color: #000;
-    font-size: 1.1rem;
+  .all-news-container footer:hover {
+    background-color: #FFAA00;
   }
 </style>

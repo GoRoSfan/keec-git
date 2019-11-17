@@ -62,10 +62,20 @@
       <aside>
         <div class="context-header">Актуальна інформація</div>
         <div class="last-news">
-          <ContentBlock
+          <article
             v-for="one_last in last_list"
-            :block="one_last"
-          ></ContentBlock>
+            :one_new="one_last"
+            class="last-container"
+          >
+            <header class="last-header">
+              <cite>{{one_last.title}}</cite>
+            </header>
+            <main class="last-main">
+              <img :src="host + one_last.image" alt="Фотографія до новини" class="last-image">
+              <div class="last-description">{{one_last.description}} {{text}}</div>
+            </main>
+            <footer class="last-footer" @click="go_to_detail(host + one_last.detail)">Детальніше</footer>
+          </article>
         </div>
         <div class="context-header">
           <span>Корисні ресурси</span>
@@ -78,22 +88,16 @@
 </template>
 
 <script>
-  import ContentBlock from './ContentBlock';
 
   export default {
     name: 'Home',
 
-    components: {
-      ContentBlock,
-    },
-
-    props: {
-
-    },
+    props: {},
 
     data() {
       return {
         last_list: '',
+        host: window.location.protocol.concat('//127.0.0.1:8000'),
       };
     },
 
@@ -107,11 +111,16 @@
         },
         success: (response) => {
           this.last_list = response.data;
-          this.total_news = response.total_news;
-          this.page_size = response.page_size;
         },
       });
-    }
+    },
+
+    methods: {
+      go_to_detail: function (link) {
+        location.href = link;
+      },
+    },
+
   };
 </script>
 
@@ -299,8 +308,87 @@
     margin-top: 0;
   }
 
-  /deep/ .last-news .block-container header time {
-    display: none;
+  .last-news article {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    flex-direction: column;
+    flex-wrap: nowrap;
+    -webkit-flex-flow: column nowrap;
+
+    margin: 2vh 0;
+  }
+
+  .last-news article:first-child {
+    margin-top: 0;
+  }
+
+  .last-news header {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    padding: 0.8vh 2vw;
+
+    color: #3914AF;
+
+    border-radius: 2vw 2vw 0 0;
+    border-bottom: #FFD300 solid 1px;
+
+    -webkit-box-shadow: inset 0 -1px #646464;
+    -moz-box-shadow: inset 0 -1px #646464;
+    box-shadow: inset 0 -1px #646464;
+
+    background-color: #FFD300;
+  }
+
+  .last-news .last-header cite {
+    font-style: normal;
+    font-size: 1.1rem;
+  }
+
+  .last-news main {
+    padding: 1.5vh 1.5vw;
+
+    color: #FFE773;
+    text-align: left;
+    font-size: 0.8rem;
+
+    background-color: #311491;
+  }
+
+  .last-news .last-main img {
+    width: 35%;
+    float: right;
+
+    padding-bottom: 0.4vh;
+  }
+
+  .last-news footer {
+    text-align: center;
+
+    padding: 1.5vh 2vw;
+    border-radius: 0 0 2vw 2vw;
+
+    color: #3914AF;
+    font-size: 1rem;
+
+    background-color: #FFD300;
+
+    cursor: pointer;
+  }
+
+  .last-news footer:hover {
+    background-color: #FFAA00;
   }
 
   @media (max-width: 767.5px) {
