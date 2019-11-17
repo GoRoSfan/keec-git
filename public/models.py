@@ -217,3 +217,24 @@ class Legals(models.Model):
     def __str__(self):
         return self.name
 
+
+class Employees(models.Model):
+
+    first_name = models.CharField("", max_length=25)
+    last_name = models.CharField("", max_length=40)
+    position = models.CharField("", max_length=35)
+
+    characters = models.TextField("", max_length=1000, help_text="")
+
+    photo = models.ImageField("", upload_to='image/employee_image/',
+                              default='default/default_image_employee.png')
+
+    class Meta:
+        verbose_name = 'Співробітник'
+        verbose_name_plural = 'Співробітники'
+
+        ordering = ['last_name', 'first_name']
+
+    def __str__(self):
+        return '{0}, {1}'.format(self.first_name, self.last_name)
+
