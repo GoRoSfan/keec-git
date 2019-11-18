@@ -1,11 +1,10 @@
 from django.contrib import admin
-from .models import News, ContentTypesNews, ActivityTypesClubs, TypesRelationContacts, ContentTypesLegals, Events, \
+from .models import News, ContentTypesNews, ActivityTypesClubs, ContentTypesLegals, Events, \
     Clubs, TrainingCourses, Contacts, Legals
 
 
 admin.site.register(ContentTypesNews)
 admin.site.register(ActivityTypesClubs)
-admin.site.register(TypesRelationContacts)
 admin.site.register(ContentTypesLegals)
 
 
@@ -47,8 +46,8 @@ admin.site.register(TrainingCourses, TrainingCoursesAdmin)
 
 class ContactsAdmin(admin.ModelAdmin):
 
-    list_display = ('label', 'content', 'type_relation')
-    fields = (('label', 'content'), 'type_relation')
+    list_display = ('label', 'content')
+    fields = ('label', 'content')
 
 
 admin.site.register(Contacts, ContactsAdmin)

@@ -158,25 +158,10 @@ class TrainingCourses(models.Model):
         return reverse('training-course-detail', args=[str(self.id)])
 
 
-class TypesRelationContacts(models.Model):
-    # Модель типів зв'язку
-
-    name = models.CharField("Назва типу контакта", max_length=50)
-
-    class Meta:
-        verbose_name = 'Тип контактів'
-        verbose_name_plural = 'Типи контактів'
-
-    def __str__(self):
-        return self.name
-
-
 class Contacts(models.Model):
 
     label = models.CharField("Назва кантакту", max_length=50)
     content = models.CharField("Зміст контакту", max_length=100, null=True, blank=True)
-    type_relation = models.ForeignKey(TypesRelationContacts, on_delete=models.SET('Контакт'),
-                                      verbose_name='Тип контакту')
 
     class Meta:
         verbose_name = 'Контакт'

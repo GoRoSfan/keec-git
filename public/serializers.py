@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
-from .models import ContentTypesNews, News, ContentTypesLegals, Legals, TypesRelationContacts, Contacts,\
-    ActivityTypesClubs, Clubs, TrainingCourses, Events
+from .models import ContentTypesNews, News, ContentTypesLegals, Legals, Contacts, ActivityTypesClubs, Clubs, \
+    TrainingCourses, Events, Employees
 
 
 class ContentTypesNewsSerializers(serializers.ModelSerializer):
@@ -40,22 +40,12 @@ class LegalsSerializers(serializers.ModelSerializer):
         fields = ('id', 'name', 'detail', 'content_type')
 
 
-class TypesRelationContactsSerializers(serializers.ModelSerializer):
-
-    class Meta:
-
-        model = TypesRelationContacts
-        fields = ('id', 'name')
-
-
 class ContactsSerializers(serializers.ModelSerializer):
-
-    type_relation = TypesRelationContactsSerializers()
 
     class Meta:
 
         model = Contacts
-        fields = ('id', 'label', 'content', 'type_relation')
+        fields = ('id', 'label', 'content')
 
 
 class ActivityTypesClubsSerializers(serializers.ModelSerializer):
@@ -90,4 +80,12 @@ class AllEventsSerializers(serializers.ModelSerializer):
 
         model = Events
         fields = ('id', 'name', 'date_placing', 'detail')
+
+
+class AllEmployeesSerializers(serializers.ModelSerializer):
+
+    class Meta:
+
+        model = Employees
+        fields = ('id', 'first_name', 'last_name', 'position', 'characters', 'photo')
 
