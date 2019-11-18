@@ -7,9 +7,9 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.renderers import JSONRenderer
 
-from .models import News, Contacts, Legals, Clubs, TrainingCourses, Events
+from .models import News, Contacts, Legals, Clubs, TrainingCourses, Events, Employees
 from .serializers import AllNewsSerializers, LegalsSerializers, ContactsSerializers, AllClubsSerializers,\
-    AllTrainingCoursesSerializers, AllEventsSerializers
+    AllTrainingCoursesSerializers, AllEventsSerializers, AllEmployeesSerializers
 
 
 def paginator(model, current_page, items=2):
@@ -46,8 +46,15 @@ class LegalsView(APIView):
     permission_classes = [permissions.AllowAny]
 
     def get(self, request):
-        legals = Legals.objects.all()
+        type_filter = request.GET.get('type_filter')
+
+        if type_filter != '':
+            legals = Legals.objects.filter(content_type=type_filter)
+        else:
+            legals = Legals.objects.all()
+
         serializer = LegalsSerializers(legals, many=True)
+
         return Response({'data': serializer.data})
 
 
@@ -84,9 +91,22 @@ class AllEventsView(APIView):
     renderer_classes = [JSONRenderer]
 
     def get(self, request):
+
+        first_connection = request.GET.get('connection')
+
+        if first_connection:
+            last_event = Events.objects.last()
+            first_event = Events.objects.first()
+
+            last_year = getattr(last_event, 'date_placing').year
+            first_year = getattr(first_event, 'date_placing').year
+
+            count_year = last_year - first_year
+
         events = Events.objects.all()
         serializer = AllEventsSerializers(events, many=True)
 
         content = {'data': serializer.data}
         return Response(content)
+
 

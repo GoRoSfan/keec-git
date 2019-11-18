@@ -10,7 +10,6 @@ urlpatterns = [
 
     url(r'^news/$', views.AllNewsView.as_view(), name='all-news'),
     # url(r'^news/(?P<pk>\d+)/$', views.DetailNewsView.as_view(), name='new-detail'),
-    # url(r'^about/$', views.AboutView.as_view(), name='about-page'),
     url(r'^legal/$', views.LegalsView.as_view(), name='legal'),
     url(r'^contact/$', views.ContactsView.as_view(), name='contact'),
     # url(r'^clubs/$', views.AllClubsView.as_view(), name='all-clubs'),
