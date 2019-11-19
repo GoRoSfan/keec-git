@@ -20,6 +20,17 @@ def paginator(model, current_page, items=2):
 
     return model_part
 
+def count_year(model):
+    last_event = model.objects.last()
+    first_event = model.objects.first()
+
+    last_year = getattr(last_event, 'date_placing').year
+    first_year = getattr(first_event, 'date_placing').year
+
+    count_year = last_year - first_year
+
+    return count_year
+
 # Create your views here.
 
 
@@ -81,8 +92,8 @@ class AllTrainingCoursesView(APIView):
 
     def get(self, request):
         training_courses = TrainingCourses.objects.all()
-        serializer_courses = AllTrainingCoursesSerializers(training_courses, many=True)
-        return Response({'data': serializer_courses.data})
+        serializer = AllTrainingCoursesSerializers(training_courses, many=True)
+        return Response({'data': serializer.data})
 
 
 class AllEventsView(APIView):
@@ -94,19 +105,22 @@ class AllEventsView(APIView):
 
         first_connection = request.GET.get('connection')
 
-        if first_connection:
-            last_event = Events.objects.last()
-            first_event = Events.objects.first()
-
-            last_year = getattr(last_event, 'date_placing').year
-            first_year = getattr(first_event, 'date_placing').year
-
-            count_year = last_year - first_year
-
         events = Events.objects.all()
         serializer = AllEventsSerializers(events, many=True)
 
         content = {'data': serializer.data}
+
+        if first_connection:
+            content['count_page'] = count_year(events) + 1
+
         return Response(content)
 
+
+class AllEmployeesView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self):
+        employees = Employees.objects.all()
+        serializer = AllEmployeesSerializers(employees, many=True)
+        return Response({'data': serializer.data})
 
