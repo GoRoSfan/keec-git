@@ -16,10 +16,24 @@
     },
 
     data: function () {
-      return {}
+      return {
+        events: '',
+        count_pages: '',
+      }
     },
 
-
+    created: function () {
+      $.ajax({
+        url: 'http://127.0.0.1:8000/public/events/',
+        type: 'GET',
+        data: {
+          connection: true,
+        },
+        success: (response) => {
+          this.events = response.data;
+        },
+      })
+    },
   };
 </script>
 

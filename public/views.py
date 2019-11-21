@@ -8,7 +8,7 @@ from rest_framework import permissions
 from rest_framework.renderers import JSONRenderer
 
 from .models import News, Contacts, Legals, Clubs, TrainingCourses, Events, Employees
-from .serializers import AllNewsSerializers, LegalsSerializers, ContactsSerializers, AllClubsSerializers,\
+from .serializers import AllNewsSerializers, LegalsSerializers, ContactsSerializers, AllClubsSerializers, \
     AllTrainingCoursesSerializers, AllEventsSerializers, AllEmployeesSerializers
 
 
@@ -20,16 +20,18 @@ def paginator(model, current_page, items=2):
 
     return model_part
 
-def count_year(model):
-    last_event = model.objects.last()
-    first_event = model.objects.first()
+
+def counter_years(model):
+    last_event = model.first()
+    first_event = model.last()
 
     last_year = getattr(last_event, 'date_placing').year
     first_year = getattr(first_event, 'date_placing').year
 
-    count_year = last_year - first_year
+    count_years = last_year - first_year
 
-    return count_year
+    return count_years
+
 
 # Create your views here.
 
@@ -39,17 +41,23 @@ class AllNewsView(APIView):
 
     renderer_classes = [JSONRenderer]
 
-    def get(self, request, format=None):
+    def get(self, request):
         page_size = 3
         current_page = int(request.GET.get('current_page'))
         all_news = News.objects.all()
 
+        first_connection = request.GET.get('connection')
+
         response_news = paginator(all_news, current_page, page_size)
         serializer = AllNewsSerializers(response_news, many=True)
 
-        total_news = all_news.count()
+        content = {'data': serializer.data}
 
-        content = {'data': serializer.data, 'total_news': total_news, 'page_size': page_size}
+        if first_connection:
+            total_news = all_news.count()
+            content['total_news'] = total_news
+            content['page_size'] = page_size
+
         return Response(content)
 
 
@@ -72,7 +80,7 @@ class LegalsView(APIView):
 class ContactsView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get(self, request):
+    def get(self):
         contacts = Contacts.objects.all()
         serializer = ContactsSerializers(contacts, many=True)
         return Response({'data': serializer.data})
@@ -81,7 +89,7 @@ class ContactsView(APIView):
 class AllClubsView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get(self, request):
+    def get(self):
         clubs = Clubs.objects.all()
         serializer = AllClubsSerializers(clubs, many=True)
         return Response({'data': serializer.data})
@@ -90,7 +98,7 @@ class AllClubsView(APIView):
 class AllTrainingCoursesView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get(self, request):
+    def get(self):
         training_courses = TrainingCourses.objects.all()
         serializer = AllTrainingCoursesSerializers(training_courses, many=True)
         return Response({'data': serializer.data})
@@ -102,7 +110,6 @@ class AllEventsView(APIView):
     renderer_classes = [JSONRenderer]
 
     def get(self, request):
-
         first_connection = request.GET.get('connection')
 
         events = Events.objects.all()
@@ -111,7 +118,7 @@ class AllEventsView(APIView):
         content = {'data': serializer.data}
 
         if first_connection:
-            content['count_page'] = count_year(events) + 1
+            content['count_pages'] = counter_years(events) + 1
 
         return Response(content)
 
@@ -123,4 +130,3 @@ class AllEmployeesView(APIView):
         employees = Employees.objects.all()
         serializer = AllEmployeesSerializers(employees, many=True)
         return Response({'data': serializer.data})
-

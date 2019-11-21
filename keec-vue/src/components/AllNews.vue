@@ -58,7 +58,7 @@
         type: 'GET',
         data: {
           'current_page': this.current_page,
-
+          'connection': true,
         },
         success: (response) => {
           this.news_list = response.data;
