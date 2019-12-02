@@ -56,7 +56,7 @@ admin.site.register(Contacts, ContactsAdmin)
 class LegalsAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'content_type')
-    fields = ('name', 'description', 'content_type')
+    fields = ('name', 'detail', 'content_type')
 
 
 admin.site.register(Legals, LegalsAdmin)

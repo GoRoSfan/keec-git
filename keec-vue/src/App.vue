@@ -36,6 +36,10 @@ export default {
     font-weight: 400;
   }
 
+  pre{
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  }
+
   #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

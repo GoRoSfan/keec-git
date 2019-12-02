@@ -7,9 +7,9 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.renderers import JSONRenderer
 
-from .models import News, Contacts, Legals, Clubs, TrainingCourses, Events, Employees
+from .models import News, Contacts, Legals, Clubs, TrainingCourses, Events, Employees,ContentTypesLegals
 from .serializers import AllNewsSerializers, LegalsSerializers, ContactsSerializers, AllClubsSerializers, \
-    AllTrainingCoursesSerializers, AllEventsSerializers, AllEmployeesSerializers
+    AllTrainingCoursesSerializers, AllEventsSerializers, AllEmployeesSerializers, ContentTypesLegalsSerializers
 
 
 def paginator(model, current_page, items=2):
@@ -64,23 +64,26 @@ class AllNewsView(APIView):
 class LegalsView(APIView):
     permission_classes = [permissions.AllowAny]
 
+    renderer_classes = [JSONRenderer]
+
     def get(self, request):
-        type_filter = request.GET.get('type_filter')
+        legal_list = Legals.objects.all()
+        legal_type = ContentTypesLegals.objects.filter(legals=None)
 
-        if type_filter != '':
-            legals = Legals.objects.filter(content_type=type_filter)
-        else:
-            legals = Legals.objects.all()
+        serializer_legal = LegalsSerializers(legal_list, many=True)
+        serializer_legal_type = ContentTypesLegalsSerializers(legal_type, many=True)
 
-        serializer = LegalsSerializers(legals, many=True)
+        content = {'legal_list': serializer_legal.data, 'legal_type_list': serializer_legal_type.data}
 
-        return Response({'data': serializer.data})
+        return Response(content)
 
 
 class ContactsView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get(self):
+    renderer_classes = [JSONRenderer]
+
+    def get(self, request):
         contacts = Contacts.objects.all()
         serializer = ContactsSerializers(contacts, many=True)
         return Response({'data': serializer.data})
@@ -89,7 +92,9 @@ class ContactsView(APIView):
 class AllClubsView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get(self):
+    renderer_classes = [JSONRenderer]
+
+    def get(self, request):
         clubs = Clubs.objects.all()
         serializer = AllClubsSerializers(clubs, many=True)
         return Response({'data': serializer.data})
@@ -98,7 +103,9 @@ class AllClubsView(APIView):
 class AllTrainingCoursesView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get(self):
+    renderer_classes = [JSONRenderer]
+
+    def get(self, request):
         training_courses = TrainingCourses.objects.all()
         serializer = AllTrainingCoursesSerializers(training_courses, many=True)
         return Response({'data': serializer.data})
@@ -126,7 +133,9 @@ class AllEventsView(APIView):
 class AllEmployeesView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get(self):
+    renderer_classes = [JSONRenderer]
+
+    def get(self, request):
         employees = Employees.objects.all()
         serializer = AllEmployeesSerializers(employees, many=True)
         return Response({'data': serializer.data})

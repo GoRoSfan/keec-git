@@ -1,60 +1,60 @@
 <template>
   <mu-container class="main">
     <header>
-      <img
-        src=""
-        alt="img"
-        class="center-name-image"
-      >
-      <h1>ХЕРСОНСЬКИЙ НАУКОВО-ДОСЛІДНИЦЬКИЙ ЦЕНТР УЧНІВСЬКОЇ ТА СТУДЕНТСЬКОЇ МОЛОДІ</h1>
-      <img
-        src=""
-        alt="img"
-        class="center-name-image"
-      >
-    </header>
-    <nav class="main-menu-list">
-      <router-link tag="div" to="/news" class="main-menu-item">
-        <div class="menu-item-name">Новини</div>
-      </router-link>
-      <router-link tag="div" to="/about" class="main-menu-item">
-        <div class="menu-item-name">Про нас</div>
-        <div class="sub-menu-list sub-menu-about">
-          <router-link tag="div" to="/events" class="sub-menu-item">
-            <div class="menu-item-name">Плани</div>
-          </router-link>
-          <router-link tag="div" to="/edumaterials" class="sub-menu-item">
-            <div class="menu-item-name">Навчальні матеріали</div>
-          </router-link>
-          <router-link tag="div" to="/partners" class="sub-menu-item">
-            <div class="menu-item-name">Партнери</div>
-          </router-link>
-          <router-link tag="div" to="/team" class="sub-menu-item">
-            <div class="menu-item-name">Каманда</div>
-          </router-link>
-          <router-link tag="div" to="/contact" class="sub-menu-item">
-            <div class="menu-item-name">Контакти</div>
-          </router-link>
-        </div>
-      </router-link>
-      <div class="main-menu-item">
-        <div class="menu-item-name">Учасникам</div>
-        <div class="sub-menu-list sub-menu-members">
-          <router-link tag="div" to="/for_students" class="sub-menu-item">
-            <div class="menu-item-name">Студентам</div>
-          </router-link>
-          <router-link tag="div" to="/for_parents" class="sub-menu-item">
-            <div class="menu-item-name">Батькам</div>
-          </router-link>
-          <router-link tag="div" to="/for_partners" class="sub-menu-item">
-            <div class="menu-item-name">Партнерам</div>
-          </router-link>
-        </div>
+      <div class="site-header">
+        <img
+          src=""
+          alt="img"
+        >
+        <h1>ХЕРСОНСЬКИЙ НАУКОВО-ДОСЛІДНИЦЬКИЙ ЦЕНТР УЧНІВСЬКОЇ ТА СТУДЕНТСЬКОЇ МОЛОДІ</h1>
+        <img
+          src=""
+          alt="img"
+        >
       </div>
-      <router-link tag="div" to="/legal" class="main-menu-item">
-        <div class="menu-item-name">Правова база</div>
-      </router-link>
-    </nav>
+      <nav>
+        <router-link tag="div" to="/news" class="main-menu-item">
+          <div class="menu-item-name">Новини</div>
+        </router-link>
+        <router-link tag="div" to="/about" class="main-menu-item">
+          <div class="menu-item-name">Про нас</div>
+          <div class="sub-menu-list sub-menu-about">
+            <router-link tag="div" to="/events" class="sub-menu-item">
+              <div class="menu-item-name">Плани</div>
+            </router-link>
+            <router-link tag="div" to="/edumaterials" class="sub-menu-item">
+              <div class="menu-item-name">Навчальні матеріали</div>
+            </router-link>
+            <router-link tag="div" to="/partners" class="sub-menu-item">
+              <div class="menu-item-name">Партнери</div>
+            </router-link>
+            <router-link tag="div" to="/employees" class="sub-menu-item">
+              <div class="menu-item-name">Каманда</div>
+            </router-link>
+            <router-link tag="div" to="/contact" class="sub-menu-item">
+              <div class="menu-item-name">Контакти</div>
+            </router-link>
+          </div>
+        </router-link>
+        <div class="main-menu-item">
+          <div class="menu-item-name">Учасникам</div>
+          <div class="sub-menu-list sub-menu-members">
+            <router-link tag="div" to="/for_students" class="sub-menu-item">
+              <div class="menu-item-name">Студентам</div>
+            </router-link>
+            <router-link tag="div" to="/for_parents" class="sub-menu-item">
+              <div class="menu-item-name">Батькам</div>
+            </router-link>
+            <router-link tag="div" to="/for_partners" class="sub-menu-item">
+              <div class="menu-item-name">Партнерам</div>
+            </router-link>
+          </div>
+        </div>
+        <router-link tag="div" to="/legal" class="main-menu-item">
+          <div class="menu-item-name">Правова база</div>
+        </router-link>
+      </nav>
+    </header>
     <div class="content-container">
       <main>
         <slot name="main"></slot>
@@ -70,10 +70,10 @@
             <header class="last-header">
               <cite>{{one_last.title}}</cite>
             </header>
-            <main class="last-main">
+            <div class="last-main">
               <img :src="host + one_last.image" alt="Фотографія до новини" class="last-image">
-              <div class="last-description">{{one_last.description}} {{text}}</div>
-            </main>
+              <pre class="last-description">{{one_last.description}}</pre>
+            </div>
             <footer class="last-footer" @click="go_to_detail(host + one_last.detail)">Детальніше</footer>
           </article>
         </div>
@@ -139,7 +139,18 @@
   /*width: 90vw;*/
   /*}*/
 
-  .main > header {
+  main > header{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .site-header {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -152,7 +163,7 @@
     background-color: #311491;
   }
 
-  .main > header h1 {
+  .site-header h1 {
     padding: 0;
     margin: 2vh 1vw;
 
@@ -161,7 +172,7 @@
     color: #FFE773;
   }
 
-  .main > header .center-name-image {
+  .site-header img {
     display: none;
     position: absolute;
 
@@ -169,7 +180,7 @@
     /*width: 5%;*/
   }
 
-  .main-menu-list {
+  header > nav {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -189,7 +200,7 @@
     background-color: #FFD300;
   }
 
-  .main-menu-list .main-menu-item {
+  nav .main-menu-item {
     position: relative;
 
     padding: 1.5vh 2vw;
@@ -205,21 +216,21 @@
     transition: 0.5s ease-in-out;
   }
 
-  .main-menu-list .main-menu-item:first-child {
+  nav .main-menu-item:first-child {
     border-left-width: 3px;
   }
 
-  .main-menu-list .main-menu-item:hover {
+  nav .main-menu-item:hover {
     padding: 1.5vh 5vw;
 
     background-color: #FFAA00;
   }
 
-  .main-menu-list .menu-item-name {
+  nav .menu-item-name {
     color: #3914AF;
   }
 
-  .main-menu-list .sub-menu-list {
+  nav .sub-menu-list {
     visibility: hidden;
     opacity: 0;
 
@@ -240,12 +251,12 @@
     transition: 0.5s ease-in-out;
   }
 
-  .main-menu-list .main-menu-item:hover .sub-menu-list {
+  nav .main-menu-item:hover .sub-menu-list {
     visibility: visible;
     opacity: 1;
   }
 
-  .main-menu-list .sub-menu-item {
+  nav .sub-menu-item {
     padding: 1vh 1vw;
 
     border-bottom: 2px solid #fff;
@@ -253,13 +264,13 @@
     cursor: pointer;
   }
 
-  .main-menu-list .sub-menu-item:hover {
+  nav .sub-menu-item:hover {
     padding: 2vh 1vw;
 
     background-color: #7109AA;
   }
 
-  .main-menu-list .sub-menu-item .menu-item-name {
+  nav .sub-menu-item .menu-item-name {
     color: #FFE773;
   }
 
@@ -356,7 +367,7 @@
     font-size: 1.1rem;
   }
 
-  .last-news main {
+  .last-news .last-main {
     padding: 1.5vh 1.5vw;
 
     color: #FFE773;

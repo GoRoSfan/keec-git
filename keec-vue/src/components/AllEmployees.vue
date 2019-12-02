@@ -17,7 +17,20 @@
     },
 
     data: function () {
-      return {}
+      return {
+        employee_list: '',
+      }
+    },
+
+    created() {
+      $.ajax({
+        url: "http://127.0.0.1:8000/public/employees/",
+        type: 'GET',
+        data: {},
+        success: function(response){
+          this.employee_list = response.data;
+        },
+      });
     },
   };
 </script>

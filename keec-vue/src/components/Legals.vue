@@ -17,7 +17,22 @@
     },
 
     data: function () {
-      return {}
+      return {
+        legal_list: '',
+        legal_type_list: '',
+      }
+    },
+
+    created() {
+      $.ajax({
+        url: "http://127.0.0.1:8000/public/legal/",
+        type: 'GET',
+        data: {},
+        success: function(response){
+          this.legal_list = response.legal_list;
+          this.legal_type_list = response.legal_type_list;
+        },
+      });
     },
   };
 </script>

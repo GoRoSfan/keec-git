@@ -11,10 +11,10 @@
           <cite>{{one_new.title}}</cite>
           <time>{{one_new.post_date}}</time>
         </header>
-        <main class="news-main">
+        <div class="news-main">
           <img :src="host + one_new.image" alt="Фотографія до новини" class="news-image">
-          <div class="news-description">{{one_new.description}} {{text}}</div>
-        </main>
+          <pre class="news-description">{{one_new.description}} {{text}}</pre>
+        </div>
         <footer class="news-footer" @click="go_to_detail(host + one_new.detail)">Детальніше</footer>
       </article>
     </div>
@@ -45,7 +45,7 @@
       return {
         news_list: '',
         host: window.location.protocol.concat('//127.0.0.1:8000'),
-        text: 'LA Bu dA'.repeat(30),
+        text: 'LA Bu dA '.repeat(30),
         current_page: 1,
         total_news: 10,
         page_size: 10,
@@ -156,7 +156,7 @@
     font-size: 1rem;
   }
 
-  .all-news-container main {
+  .all-news-container .news-main {
     padding: 1.5vh 1.5vw;
 
     color: #FFE773;

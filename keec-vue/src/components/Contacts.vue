@@ -17,7 +17,20 @@
     },
 
     data: function () {
-      return {}
+      return {
+        contact_list: '',
+      }
+    },
+
+    created() {
+      $.ajax({
+        url: "http://127.0.0.1:8000/public/contact/",
+        type: 'GET',
+        data: {},
+        success: function(response){
+          this.contact_list = response.data;
+        },
+      });
     },
   };
 </script>
