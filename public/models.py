@@ -205,13 +205,13 @@ class Legals(models.Model):
 
 class Employees(models.Model):
 
-    first_name = models.CharField("", max_length=25)
-    last_name = models.CharField("", max_length=40)
-    position = models.CharField("", max_length=35)
+    first_name = models.CharField("Им'я", max_length=25)
+    last_name = models.CharField("Прізвище", max_length=40)
+    position = models.CharField("Посада", max_length=35)
 
-    characters = models.TextField("", max_length=1000, help_text="")
+    characters = models.TextField("Характеристика", max_length=1000, help_text="")
 
-    photo = models.ImageField("", upload_to='image/employee_image/',
+    photo = models.ImageField("Фотокартка", upload_to='image/employee_image/',
                               default='default/default_image_employee.png')
 
     class Meta:
@@ -222,4 +222,24 @@ class Employees(models.Model):
 
     def __str__(self):
         return '{0}, {1}'.format(self.first_name, self.last_name)
+
+
+class Partners(models.Model):
+
+    title = models.CharField("Назва організації", max_length=100)
+    description = models.TextField("Короткий опис", max_length=1000)
+
+    partner_link = models.URLField("Посилання на сайт партнера", max_length=100)
+
+    logo = models.ImageField("Логотип", upload_to='image/partner_image/',
+                             default='default/default_image_partner.png')
+
+    class Meta:
+        verbose_name = 'Партнер'
+        verbose_name_plural = 'Партнери'
+
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
 
