@@ -22,9 +22,6 @@
             <router-link tag="div" to="/events" class="sub-menu-item">
               <div class="menu-item-name">Плани</div>
             </router-link>
-            <router-link tag="div" to="/edumaterials" class="sub-menu-item">
-              <div class="menu-item-name">Навчальні матеріали</div>
-            </router-link>
             <router-link tag="div" to="/partners" class="sub-menu-item">
               <div class="menu-item-name">Партнери</div>
             </router-link>

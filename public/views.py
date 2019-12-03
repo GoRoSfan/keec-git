@@ -7,9 +7,10 @@ from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.renderers import JSONRenderer
 
-from .models import News, Contacts, Legals, Clubs, TrainingCourses, Events, Employees,ContentTypesLegals
+from .models import News, Contacts, Legals, Clubs, TrainingCourses, Events, Employees,ContentTypesLegals, Partners
 from .serializers import AllNewsSerializers, LegalsSerializers, ContactsSerializers, AllClubsSerializers, \
-    AllTrainingCoursesSerializers, AllEventsSerializers, AllEmployeesSerializers, ContentTypesLegalsSerializers
+    AllTrainingCoursesSerializers, AllEventsSerializers, EmployeesSerializers, ContentTypesLegalsSerializers, \
+    PartnersSerializers
 
 
 def paginator(model, current_page, items=2):
@@ -130,12 +131,26 @@ class AllEventsView(APIView):
         return Response(content)
 
 
-class AllEmployeesView(APIView):
+class EmployeesView(APIView):
     permission_classes = [permissions.AllowAny]
 
     renderer_classes = [JSONRenderer]
 
     def get(self, request):
         employees = Employees.objects.all()
-        serializer = AllEmployeesSerializers(employees, many=True)
+        serializer = EmployeesSerializers(employees, many=True)
         return Response({'data': serializer.data})
+
+
+class PartnersView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    renderer_classes = [JSONRenderer]
+
+    def get(self, request):
+        partners = Partners.objects.all()
+        serializer = PartnersSerializers(partners, many=True)
+
+        content = {'data': serializer.data}
+
+        return Response(content)

@@ -7,6 +7,7 @@ import Contacts from '@/components/Contacts';
 import AllEvents from '@/components/AllEvents';
 import About from '@/components/About';
 import AllEmployees from '@/components/AllEmployees'
+import Partners from "../components/Partners";
 
 Vue.use(Router);
 
@@ -50,9 +51,15 @@ export default new Router({
 
     {
       path: '/employees',
-      name: 'all-employees',
+      name: 'employees',
       component: AllEmployees,
-    }
+    },
+
+    {
+      path: '/partners',
+      name: 'partners',
+      component: Partners,
+    },
 
   ],
 });

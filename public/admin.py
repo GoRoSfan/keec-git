@@ -1,11 +1,13 @@
 from django.contrib import admin
 from .models import News, ContentTypesNews, ActivityTypesClubs, ContentTypesLegals, Events, \
-    Clubs, TrainingCourses, Contacts, Legals
+    Clubs, TrainingCourses, Contacts, Legals, Employees, Partners
 
 
 admin.site.register(ContentTypesNews)
 admin.site.register(ActivityTypesClubs)
 admin.site.register(ContentTypesLegals)
+admin.site.register(Employees)
+admin.site.register(Partners)
 
 
 class NewsAdmin(admin.ModelAdmin):

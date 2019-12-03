@@ -22,7 +22,8 @@ urlpatterns = [
     url(r'^events/$', views.AllEventsView.as_view(), name='all-events'),
     # url(r'^events/(?P<pk>\d+)/$', views.DetailEventsView.as_view(), name='event-detail'),
 
-    url(r'^employees/$', views.AllEmployeesView.as_view(), name='all-employees'),
-    # url(r'^employees/(?P<pk>\d+)/$', views.DetailEmployeesView.as_view(), name='employee-detail'),
+    url(r'^employees/$', views.EmployeesView.as_view(), name='employees'),
+
+    url(r'^partners/$', views.PartnersView.as_view(), name='partners')
 
 ]
